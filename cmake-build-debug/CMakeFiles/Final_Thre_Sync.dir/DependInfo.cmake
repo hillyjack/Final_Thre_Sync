@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/home/ubuntu/CLionProjects/Final_Thre_Sync/consumer.c" "/home/ubuntu/CLionProjects/Final_Thre_Sync/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/consumer.c.o"
   "/home/ubuntu/CLionProjects/Final_Thre_Sync/main.c" "/home/ubuntu/CLionProjects/Final_Thre_Sync/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/main.c.o"
   "/home/ubuntu/CLionProjects/Final_Thre_Sync/producer.c" "/home/ubuntu/CLionProjects/Final_Thre_Sync/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/producer.c.o"
   )

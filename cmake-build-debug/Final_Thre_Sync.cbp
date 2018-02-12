@@ -78,6 +78,15 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/ubuntu/CLionProjects/Final_Thre_Sync/consumer.c">
+			<Option target="Final_Thre_Sync"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/CLionProjects/Final_Thre_Sync/consumer.h">
+			<Option target="Final_Thre_Sync"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/CLionProjects/Final_Thre_Sync/includes.h">
+			<Option target="Final_Thre_Sync"/>
+		</Unit>
 		<Unit filename="/home/ubuntu/CLionProjects/Final_Thre_Sync/main.c">
 			<Option target="Final_Thre_Sync"/>
 		</Unit>

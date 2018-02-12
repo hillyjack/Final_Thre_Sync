@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Final_Thre_Sync.dir/main.c.o"
   "CMakeFiles/Final_Thre_Sync.dir/producer.c.o"
+  "CMakeFiles/Final_Thre_Sync.dir/consumer.c.o"
   "Final_Thre_Sync.pdb"
   "Final_Thre_Sync"
 )

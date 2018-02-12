@@ -123,6 +123,33 @@ Final_Thre_Sync/fast:
 	$(MAKE) -f CMakeFiles/Final_Thre_Sync.dir/build.make CMakeFiles/Final_Thre_Sync.dir/build
 .PHONY : Final_Thre_Sync/fast
 
+consumer.o: consumer.c.o
+
+.PHONY : consumer.o
+
+# target to build an object file
+consumer.c.o:
+	$(MAKE) -f CMakeFiles/Final_Thre_Sync.dir/build.make CMakeFiles/Final_Thre_Sync.dir/consumer.c.o
+.PHONY : consumer.c.o
+
+consumer.i: consumer.c.i
+
+.PHONY : consumer.i
+
+# target to preprocess a source file
+consumer.c.i:
+	$(MAKE) -f CMakeFiles/Final_Thre_Sync.dir/build.make CMakeFiles/Final_Thre_Sync.dir/consumer.c.i
+.PHONY : consumer.c.i
+
+consumer.s: consumer.c.s
+
+.PHONY : consumer.s
+
+# target to generate assembly for a file
+consumer.c.s:
+	$(MAKE) -f CMakeFiles/Final_Thre_Sync.dir/build.make CMakeFiles/Final_Thre_Sync.dir/consumer.c.s
+.PHONY : consumer.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -186,6 +213,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Final_Thre_Sync"
+	@echo "... consumer.o"
+	@echo "... consumer.i"
+	@echo "... consumer.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -1,1 +1,1 @@
-/usr/bin/cc -g   -pthread CMakeFiles/Final_Thre_Sync.dir/main.c.o CMakeFiles/Final_Thre_Sync.dir/producer.c.o  -o Final_Thre_Sync -lrt 
+/usr/bin/cc -g   -pthread CMakeFiles/Final_Thre_Sync.dir/main.c.o CMakeFiles/Final_Thre_Sync.dir/producer.c.o CMakeFiles/Final_Thre_Sync.dir/consumer.c.o  -o Final_Thre_Sync -lrt 

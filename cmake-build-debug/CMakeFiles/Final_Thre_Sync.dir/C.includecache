@@ -6,7 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/ubuntu/CLionProjects/Final_Thre_Sync/main.c
+/home/ubuntu/CLionProjects/Final_Thre_Sync/consumer.c
+consumer.h
+/home/ubuntu/CLionProjects/Final_Thre_Sync/consumer.h
+
+/home/ubuntu/CLionProjects/Final_Thre_Sync/consumer.h
+includes.h
+/home/ubuntu/CLionProjects/Final_Thre_Sync/includes.h
+
+/home/ubuntu/CLionProjects/Final_Thre_Sync/includes.h
 unistd.h
 -
 sys/types.h
@@ -31,4 +39,30 @@ errno.h
 -
 getopt.h
 -
+sys/socket.h
+-
+netinet/in.h
+-
+memory.h
+-
+sys/time.h
+-
+time.h
+-
+
+/home/ubuntu/CLionProjects/Final_Thre_Sync/main.c
+includes.h
+/home/ubuntu/CLionProjects/Final_Thre_Sync/includes.h
+producer.h
+/home/ubuntu/CLionProjects/Final_Thre_Sync/producer.h
+consumer.h
+/home/ubuntu/CLionProjects/Final_Thre_Sync/consumer.h
+
+/home/ubuntu/CLionProjects/Final_Thre_Sync/producer.c
+producer.h
+/home/ubuntu/CLionProjects/Final_Thre_Sync/producer.h
+
+/home/ubuntu/CLionProjects/Final_Thre_Sync/producer.h
+includes.h
+/home/ubuntu/CLionProjects/Final_Thre_Sync/includes.h
 

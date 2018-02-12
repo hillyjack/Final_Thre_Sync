@@ -11,7 +11,31 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e00ce09-7a51-4724-8940-4a40f29b35ff" name="Default" comment="" />
+    <list default="true" id="7e00ce09-7a51-4724-8940-4a40f29b35ff" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/C.includecache" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/C.includecache" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/DependInfo.cmake" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/build.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/build.make" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/cmake_clean.cmake" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/depend.internal" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/depend.internal" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/depend.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/depend.make" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/link.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/link.txt" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/main.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/main.c.o" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/progress.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Final_Thre_Sync.dir/progress.make" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Final_Thre_Sync" afterPath="$PROJECT_DIR$/cmake-build-debug/Final_Thre_Sync" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Final_Thre_Sync.cbp" afterPath="$PROJECT_DIR$/cmake-build-debug/Final_Thre_Sync.cbp" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" />
+      <change beforePath="$PROJECT_DIR$/consumer.c" afterPath="$PROJECT_DIR$/consumer.c" />
+      <change beforePath="$PROJECT_DIR$/consumer.h" afterPath="$PROJECT_DIR$/consumer.h" />
+      <change beforePath="$PROJECT_DIR$/includes.h" afterPath="$PROJECT_DIR$/includes.h" />
+      <change beforePath="$PROJECT_DIR$/main.c" afterPath="$PROJECT_DIR$/main.c" />
+      <change beforePath="$PROJECT_DIR$/producer.c" afterPath="$PROJECT_DIR$/producer.c" />
+      <change beforePath="$PROJECT_DIR$/producer.h" afterPath="$PROJECT_DIR$/producer.h" />
+      <change beforePath="$PROJECT_DIR$/py_client.py" afterPath="$PROJECT_DIR$/py_client.py" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,30 +47,13 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="41" lean-forward="false" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="93" column="1" lean-forward="true" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
+            <state relative-caret-position="189">
+              <caret line="45" column="25" lean-forward="true" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
               <folding>
-                <element signature="e#0#19#0" expanded="true" />
-                <element signature="e#412#482#1" expanded="false" />
-                <element signature="e#485#608#1" expanded="false" />
-                <element signature="e#611#706#1" expanded="false" />
-                <element signature="e#709#2040#0" expanded="false" />
-                <element signature="e#2043#3806#0" expanded="false" />
-                <element signature="e#3809#5298#0" expanded="false" />
-                <element signature="e#5337#7226#0" expanded="false" />
+                <element signature="e#0#21#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -55,19 +62,48 @@
       <file leaf-file-name="producer.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/producer.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-792">
+              <caret line="69" column="24" lean-forward="false" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="24" />
+              <folding>
+                <element signature="e#64#1405#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="question_1.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/question_1.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="8" column="12" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="8" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="producer.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/producer.h">
+      <file leaf-file-name="includes.h" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/includes.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="441">
+              <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+              <folding>
+                <element signature="e#113#132#0" expanded="true" />
+                <element signature="e#601#671#1" expanded="false" />
+                <element signature="e#674#797#1" expanded="false" />
+                <element signature="e#800#895#1" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="py_client.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/py_client.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="30" column="30" lean-forward="true" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
+              <folding>
+                <element signature="e#23#36#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,7 +117,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/producer.h" />
+        <option value="$PROJECT_DIR$/consumer.h" />
         <option value="$PROJECT_DIR$/main.c" />
+        <option value="$PROJECT_DIR$/consumer.c" />
+        <option value="$PROJECT_DIR$/question_1.txt" />
+        <option value="$PROJECT_DIR$/producer.c" />
+        <option value="$PROJECT_DIR$/py_client.py" />
+        <option value="$PROJECT_DIR$/includes.h" />
       </list>
     </option>
   </component>
@@ -172,23 +215,24 @@
       <workItem from="1518282500726" duration="181000" />
       <workItem from="1518283015658" duration="849000" />
       <workItem from="1518284063113" duration="9087000" />
-      <workItem from="1518337772696" duration="25014000" />
+      <workItem from="1518337772696" duration="42755000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39771000" />
+    <option name="totallyTimeSpent" value="57512000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1615" height="916" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19009288" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19009288" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881773" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32839507" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34444445" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34444445" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -228,14 +272,7 @@
         <state relative-caret-position="1728">
           <caret line="96" column="8" lean-forward="false" selection-start-line="96" selection-start-column="8" selection-end-line="96" selection-end-column="8" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <element signature="e#412#482#1" expanded="false" />
-            <element signature="e#485#608#1" expanded="false" />
-            <element signature="e#611#706#1" expanded="false" />
-            <element signature="e#709#2040#0" expanded="false" />
-            <element signature="e#2043#3806#0" expanded="false" />
-            <element signature="e#3809#5298#0" expanded="false" />
-            <element signature="e#5337#7226#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -245,14 +282,7 @@
         <state relative-caret-position="2016">
           <caret line="112" column="5" lean-forward="true" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <element signature="e#412#482#1" expanded="false" />
-            <element signature="e#485#608#1" expanded="false" />
-            <element signature="e#611#706#1" expanded="false" />
-            <element signature="e#709#2040#0" expanded="false" />
-            <element signature="e#2043#3806#0" expanded="false" />
-            <element signature="e#3809#5298#0" expanded="false" />
-            <element signature="e#5337#7226#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -267,41 +297,85 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
+        <state relative-caret-position="0">
           <caret line="8" column="41" lean-forward="false" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/producer.c">
+    <entry file="file://$PROJECT_DIR$/consumer.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/producer.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="108">
+          <caret line="6" column="21" lean-forward="false" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="93" column="1" lean-forward="true" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
+        <state relative-caret-position="189">
+          <caret line="45" column="25" lean-forward="true" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <element signature="e#412#482#1" expanded="false" />
-            <element signature="e#485#608#1" expanded="false" />
-            <element signature="e#611#706#1" expanded="false" />
-            <element signature="e#709#2040#0" expanded="false" />
-            <element signature="e#2043#3806#0" expanded="false" />
-            <element signature="e#3809#5298#0" expanded="false" />
-            <element signature="e#5337#7226#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/consumer.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="48" lean-forward="false" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+          <folding>
+            <element signature="e#65#1560#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/producer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/producer.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-792">
+          <caret line="69" column="24" lean-forward="false" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="24" />
+          <folding>
+            <element signature="e#64#1405#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/question_1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="12" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="8" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py_client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="30" column="30" lean-forward="true" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
+          <folding>
+            <element signature="e#23#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+          <folding>
+            <element signature="e#113#132#0" expanded="true" />
+            <element signature="e#601#671#1" expanded="false" />
+            <element signature="e#674#797#1" expanded="false" />
+            <element signature="e#800#895#1" expanded="false" />
           </folding>
         </state>
       </provider>
