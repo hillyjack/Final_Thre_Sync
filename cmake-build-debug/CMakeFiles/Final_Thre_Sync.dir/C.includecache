@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ubuntu/CLionProjects/Final_Thre_Sync/main.c
+unistd.h
+-
+sys/types.h
+-
+sys/mman.h
+-
+fcntl.h
+-
+stdlib.h
+-
+stdio.h
+-
+semaphore.h
+-
+pthread.h
+-
+sys/wait.h
+-
+string.h
+-
+errno.h
+-
+getopt.h
+-
+
