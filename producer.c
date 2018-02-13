@@ -26,11 +26,14 @@ void createProducer(void *p) {
 
         while (1) {
 
-            struct Question Q;
+
             enum oper op = (enum oper)(rand() % 4 + 1);
             //printf("PRODoper0- %d\n", op);
             num1 = (double)(rand() % (highval - lowval) + lowval);
             num2 = (double)(rand() % (highval - lowval) + lowval);
+
+            ////////reused code
+            struct Question Q;
             Q.num1 = num1;
             Q.num2 = num2;
             Q.op = op;
@@ -48,7 +51,7 @@ void createProducer(void *p) {
 
             pthread_mutex_unlock(&virt_addr->mx1);
             sem_post(&virt_addr->sem2);
-
+            ////////////
             sleep(n);
         }
     }
@@ -56,36 +59,38 @@ void createProducer(void *p) {
 }
 
 
-void createPythonProducer() {
+void createPythonProducer(struct SHM_data *current_SHM) {
 
     int pid = fork();
 
     if (pid == 0) {
+        struct SHM_data *virt_addr = current_SHM;
+
+        int py_id  = 0;
         char * files_list;
 
-        //create sucket
+        //create socket
         struct sockaddr_in addr;
         struct sockaddr_in client;
         int addrlen, n = 1;
         int sockfd, pyfd;
 
-        //struct sigaction act;
-        printf("*********starting sucket*********\n");
+        printf("*********starting socket*********\n");
         sockfd = socket(AF_INET, SOCK_STREAM, 0);
         if (sockfd < 0) {
-            printf("sucket sockfd - %s\n", strerror(errno));
-            close (socket);
+            printf("socket sockfd - %s\n", strerror(errno));
+            close (sockfd);
             exit(1);
         }
-        printf("*********memset sucket*********\n");
+        printf("*********memset socket*********\n");
         memset(&addr, 0, sizeof(addr));
         addr.sin_family = AF_INET;
         addr.sin_port = htons(PORT);// up 1024
         addr.sin_addr.s_addr = INADDR_ANY;//htnl(INADDR_LOOPBACK)
         n = bind(sockfd, (struct sockaddr *) &addr, sizeof(addr));
         if (n < 0) {
-            printf("sucket bind - %s\n", strerror(errno));
-            close (socket);
+            printf("socket bind - %s\n", strerror(errno));
+            close (sockfd);
             exit(1);
         }
         printf("*********I'm listening*********\n");
@@ -104,11 +109,9 @@ void createPythonProducer() {
         addrlen = sizeof(client);
         pyfd = accept(sockfd, (struct sockaddr *) &client, &addrlen);
         if (pyfd < 0) {
-            //if (errno == EINTR)         /* Probably a child dying */
             printf("sucket python fd - %s\n", strerror(errno));
-            close (socket);
-            //perror("accept");
-            exit(1);                      /* A real problem */
+            close (sockfd);
+            exit(1);
         }
 
 
@@ -121,7 +124,7 @@ void createPythonProducer() {
 
         printf("*********list was sent*********\n");
         //sleep(10);
-        close (socket);
+        close (sockfd);
         //read PIPE
 
         while(1){
@@ -129,6 +132,7 @@ void createPythonProducer() {
             //len = buf[0];
             n = 0;
             int i = 0;
+
             n = fread(buf, 1,1, fp);
 
             while (buf[0] != '\0' && buf[0] != EOF && buf[0] !='\n' )
@@ -140,7 +144,32 @@ void createPythonProducer() {
                 n = fread(buf, 1,1, fp);
             }
             buffer[i] = '\0';
+            //////////////////////////////////////////
             printf("%s\n", buffer);
+
+            struct Question Q = {0};
+            printf("---------------memset-----------------\n");
+
+            /////////Handel with Null
+            Q.num1 = atof(strtok(buffer," "));
+            Q.num2 = atof(strtok(NULL," "));
+            printf("PRODnum1 - %f, PRODnumf - %f\n", Q.num1 ,Q.num2 );
+            Q.op = (enum oper)atoi(strtok(NULL," "));
+            printf("---------------Question loaded-----------------\n");
+
+            printf("PRODoper1- %d\n", Q.op);
+
+            sem_wait(&virt_addr->sem1);
+            pthread_mutex_lock(&virt_addr->mx1);
+
+            virt_addr->arr[virt_addr->top] = Q;
+            if (virt_addr->top == 9) {
+                virt_addr->top = 0;
+            } else { virt_addr->top++;}
+
+            pthread_mutex_unlock(&virt_addr->mx1);
+            sem_post(&virt_addr->sem2);
+            sleep(5);
         }
 
 

@@ -4,10 +4,37 @@
 
 int main(int argc, char * argv[]) {
 
-    //printf("%s\n",argv[2]);
-    //printf("%s\n",argv[4]);
-    int numOfProducers = 2;
-    int numOfConsumers = 1;
+    int opt = 0;
+    int numOfProducers = 0;
+    int numOfConsumers = 0;
+
+    while((opt = getopt(argc, argv,"p:c:")) != -1){
+        switch(opt){
+            case 'p':
+                numOfProducers = atoi(optarg);
+                if(numOfProducers <=0)
+                {
+                    numOfProducers = 1;
+                }
+                break;
+            case 'c':
+                numOfConsumers = atoi(optarg);
+                if(numOfConsumers <=0)
+                {
+                    numOfConsumers = 1;
+                }
+                break;
+
+            default:
+                printf("ArgumentsError: please enter the arguments in following from "
+                               "-p <numberOfProducers> -c <numberOfConsumers>\n");
+                exit(1);
+        }
+    }
+
+    //printf("p - %d\n",numOfProducers);
+    //printf("c - %d\n",numOfConsumers);
+
 
     int i, md, status, pid;
     long pg_size;
@@ -47,8 +74,9 @@ int main(int argc, char * argv[]) {
         data1.highval = 100;
         createProducer(&data1);
     }
+
     //create python producer
-    createPythonProducer();
+    createPythonProducer(virt_addr);
 
     //create Consumers
     for (i = 0; i < numOfConsumers; ++i) {

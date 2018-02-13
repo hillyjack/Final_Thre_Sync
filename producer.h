@@ -9,6 +9,6 @@
 
 
 void createProducer(void *p);
-void createPythonProducer();
+void createPythonProducer(struct SHM_data *current_SHM);
 
 #endif //FINAL_THRE_SYNC_PRODUCER_H
