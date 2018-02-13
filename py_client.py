@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+
+import socket
+import sys
+import os
+import signal
+from time import sleep
+
 def sig_handler(a,b):
     global run
     global index
@@ -13,12 +20,6 @@ def sig_handler(a,b):
 
     print >> sys.stderr, 'moving to file- ', file_list[index]
 
-
-import socket
-import sys
-import os
-import signal
-
 index = 0
 run = False
 last_index = 0
@@ -29,7 +30,7 @@ signal.signal(signal.SIGUSR1, sig_handler)
 
 #create socket
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_address = ('localhost', 2006)
+server_address = ('localhost', 2009)
 print >>sys.stderr, 'connecting to %s port %s' % server_address
 client_socket.connect(server_address)
 client_socket.send(str(os.getpid()))
@@ -54,10 +55,14 @@ while 1:
 
     for line in open(fullPath):
         if run:
+            sleep(2)
             line = line.rstrip("\n")
+            print >> sys.stderr, 'line- ', line
             print line
-            sys.stdout.flush()
+
+            if(line):
+                sys.stdout.flush()
         else:
             break
 
-    data = None
+    #data = None

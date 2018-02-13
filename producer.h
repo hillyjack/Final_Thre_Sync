@@ -10,6 +10,6 @@
 
 void createProducer(void *p);
 void createPythonProducer();
-void questionToShmArr (double num1, double num2, int op )
+void questionToShmArr (double num1, double num2, int op );
 
 #endif //FINAL_THRE_SYNC_PRODUCER_H

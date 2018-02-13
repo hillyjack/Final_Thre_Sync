@@ -7,7 +7,7 @@ int md = 0;
 long pg_size = 0;
 FILE *fp = NULL;
 
-void quit_handler(){
+void quit_handler(const int signal, void *ptr){
 
     //closing shared memory
     if(virt_addr != NULL)
@@ -19,7 +19,7 @@ void quit_handler(){
 
     //closing PIPE
     if(fp != NULL){
-        close (fp);
+        close ((int*)fp);
     }
 
     //closing sockets

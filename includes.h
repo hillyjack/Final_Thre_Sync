@@ -26,7 +26,7 @@
 
 
 #define MAXBUF 50
-#define PORT 2006
+#define PORT 2009
 #define NUM_OF_Q 10
 #define SHARED_MEMORY "/my_memory"
 

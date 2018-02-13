@@ -43,6 +43,7 @@ void createProducer(void *p) {
     else{}
 }
 
+
 void questionToShmArr (double num1, double num2, int op ){
     struct Question Q;
     Q.num1 = num1;
@@ -71,6 +72,7 @@ void createPythonProducer() {
     if (pid == 0) {
         //struct SHM_data *virt_addr = current_SHM;
 
+        int d = 0;
         int py_id  = 0;
         char * files_list;
 
@@ -121,7 +123,9 @@ void createPythonProducer() {
 
         //recv pid from python
         n=read(pyfd, py_id_str, MAXBUF); py_id_str[n] = '\0';
-        printf ("Message; %s\n", py_id_str);
+        printf ("----------------------------------------P_ID_STR: %s\n", py_id_str);
+        py_id = atoi(py_id_str);
+        printf ("----------------------------------------P_ID: %d\n", py_id);
 
         files_list = "question_1.txt,question_2.txt,question_3.txt,question_4.txt,question_5.txt";
 
@@ -174,9 +178,18 @@ void createPythonProducer() {
             questionToShmArr(num1, num2, op);
             printf("---------------Question loaded-----------------\n");
 
-            sleep(5);
+            //if(rand()%5 == 0)
+            d++;
+            printf("---------------d =%d-----------------\n",d);
+            if (d == 2)
+            {
+                d = 0;
+                kill(py_id, SIGUSR1);
+            }
+
+            sleep(2);
         }
 
 
-    } else {}
+    }else {}
 }
