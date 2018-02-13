@@ -12,7 +12,7 @@ void createSolver(struct SHM_data *current_SHM) {
         double res = 0;
 
         struct SHM_data *virt_addr = current_SHM;
-        //printf("%d\n",virt_addr );
+        printf("%d\n",virt_addr );
 
         while (1) {
             sem_wait(&virt_addr->sem2);

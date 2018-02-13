@@ -26,7 +26,7 @@
 
 
 #define MAXBUF 50
-#define PORT 2016
+#define PORT 2006
 #define NUM_OF_Q 10
 #define SHARED_MEMORY "/my_memory"
 
@@ -46,8 +46,14 @@ struct SHM_data{
     int top;
 };
 
+extern struct SHM_data *virt_addr;
+extern int md;
+extern long pg_size;
+extern int sockfd, pyfd;
+extern FILE *fp;
+
 struct Data{
-    struct SHM_data * current_SHM;
+    //struct SHM_data * current_SHM;
     int sec;
     int lowval;
     int highval;

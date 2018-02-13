@@ -4,6 +4,8 @@
 
 #include "producer.h"
 
+int sockfd, pyfd;
+
 void createProducer(void *p) {
 
     int pid = fork();
@@ -14,43 +16,26 @@ void createProducer(void *p) {
         srand((unsigned) time(&t) % getpid());
 
         struct Data *d = (struct Data *) p;
-        struct SHM_data *virt_addr = d->current_SHM;
-        //printf("%d\n",virt_addr );
+        //struct SHM_data *virt_addr = d->current_SHM;
+        printf("%d\n",virt_addr );
 
         int n = d->sec;
         int lowval = d->lowval;
         int highval = d->highval;
-        int num1, num2;
+        double num1, num2;
+        int op;
 
         //printf("lowval - %d, highval - %d\n",lowval ,highval );
 
         while (1) {
 
-
-            enum oper op = (enum oper)(rand() % 4 + 1);
+            op = rand() % 4;
             //printf("PRODoper0- %d\n", op);
-            num1 = (double)(rand() % (highval - lowval) + lowval);
-            num2 = (double)(rand() % (highval - lowval) + lowval);
-
+            num1 = (double)((rand() % (highval - lowval)) + lowval);
+            num2 = (double)((rand() % (highval - lowval)) + lowval);
+            //printf("PRODnum1 - %f, PRODnumf - %f\n", num1 ,num2 );
             ////////reused code
-            struct Question Q;
-            Q.num1 = num1;
-            Q.num2 = num2;
-            Q.op = op;
-
-            //printf("PRODnum1 - %f, PRODnumf - %f\n", Q.num1 ,Q.num2 );
-            //printf("PRODoper1- %d\n", Q.op);
-
-            sem_wait(&virt_addr->sem1);
-            pthread_mutex_lock(&virt_addr->mx1);
-
-            virt_addr->arr[virt_addr->top] = Q;
-            if (virt_addr->top == 9) {
-                virt_addr->top = 0;
-            } else { virt_addr->top++;}
-
-            pthread_mutex_unlock(&virt_addr->mx1);
-            sem_post(&virt_addr->sem2);
+            questionToShmArr(num1, num2, op);
             ////////////
             sleep(n);
         }
@@ -58,13 +43,33 @@ void createProducer(void *p) {
     else{}
 }
 
+void questionToShmArr (double num1, double num2, int op ){
+    struct Question Q;
+    Q.num1 = num1;
+    Q.num2 = num2;
+    Q.op = (enum oper)op;
 
-void createPythonProducer(struct SHM_data *current_SHM) {
+    //printf("PRODnum1 - %f, PRODnumf - %f\n", Q.num1 ,Q.num2 );
+    //printf("PRODoper1- %d\n", Q.op);
+
+    sem_wait(&virt_addr->sem1);
+    pthread_mutex_lock(&virt_addr->mx1);
+
+    virt_addr->arr[virt_addr->top] = Q;
+    if (virt_addr->top == 9) {
+    virt_addr->top = 0;
+    } else { virt_addr->top++;}
+
+    pthread_mutex_unlock(&virt_addr->mx1);
+    sem_post(&virt_addr->sem2);
+}
+
+void createPythonProducer() {
 
     int pid = fork();
 
     if (pid == 0) {
-        struct SHM_data *virt_addr = current_SHM;
+        //struct SHM_data *virt_addr = current_SHM;
 
         int py_id  = 0;
         char * files_list;
@@ -73,7 +78,7 @@ void createPythonProducer(struct SHM_data *current_SHM) {
         struct sockaddr_in addr;
         struct sockaddr_in client;
         int addrlen, n = 1;
-        int sockfd, pyfd;
+        //int sockfd, pyfd;
 
         printf("*********starting socket*********\n");
         sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -96,13 +101,13 @@ void createPythonProducer(struct SHM_data *current_SHM) {
         printf("*********I'm listening*********\n");
         listen(sockfd, 1);
 
-
         //create PIPE
         char buffer[MAXBUF] = "";
         char buf[MAXBUF] = "";
+        char py_id_str[MAXBUF] = "";
         printf("*********starting popen*********\n");
-        FILE *fp = popen("python /home/ubuntu/CLionProjects/Final_Thre_Sync/py_client.py", "r");
 
+        fp = popen("python ../py_client.py", "r");
 
         /* Accept connection and deal with request */
         memset(&client, 0, sizeof(client));
@@ -114,6 +119,9 @@ void createPythonProducer(struct SHM_data *current_SHM) {
             exit(1);
         }
 
+        //recv pid from python
+        n=read(pyfd, py_id_str, MAXBUF); py_id_str[n] = '\0';
+        printf ("Message; %s\n", py_id_str);
 
         files_list = "question_1.txt,question_2.txt,question_3.txt,question_4.txt,question_5.txt";
 
@@ -125,6 +133,8 @@ void createPythonProducer(struct SHM_data *current_SHM) {
         printf("*********list was sent*********\n");
         //sleep(10);
         close (sockfd);
+        close (pyfd);
+
         //read PIPE
 
         while(1){
@@ -147,28 +157,23 @@ void createPythonProducer(struct SHM_data *current_SHM) {
             //////////////////////////////////////////
             printf("%s\n", buffer);
 
-            struct Question Q = {0};
             printf("---------------memset-----------------\n");
 
             /////////Handel with Null
-            Q.num1 = atof(strtok(buffer," "));
-            Q.num2 = atof(strtok(NULL," "));
-            printf("PRODnum1 - %f, PRODnumf - %f\n", Q.num1 ,Q.num2 );
-            Q.op = (enum oper)atoi(strtok(NULL," "));
+            double num1 = 0.0, num2 = 0.0;
+            int op = 0;
+
+            num1 = atof(strtok(buffer," "));
+            num2 = atof(strtok(NULL," "));
+            //printf("PRODnum1 - %f, PRODnumf - %f\n", Q.num1 ,Q.num2 );
+            op = atoi(strtok(NULL," "));
+            printf("PRODoper1- %d\n", op);
+
+            printf("---------------Var Was Defiened-----------------\n");
+
+            questionToShmArr(num1, num2, op);
             printf("---------------Question loaded-----------------\n");
 
-            printf("PRODoper1- %d\n", Q.op);
-
-            sem_wait(&virt_addr->sem1);
-            pthread_mutex_lock(&virt_addr->mx1);
-
-            virt_addr->arr[virt_addr->top] = Q;
-            if (virt_addr->top == 9) {
-                virt_addr->top = 0;
-            } else { virt_addr->top++;}
-
-            pthread_mutex_unlock(&virt_addr->mx1);
-            sem_post(&virt_addr->sem2);
             sleep(5);
         }
 

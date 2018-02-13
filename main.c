@@ -2,6 +2,36 @@
 #include "producer.h"
 #include "consumer.h"
 
+struct SHM_data *virt_addr = NULL;
+int md = 0;
+long pg_size = 0;
+FILE *fp = NULL;
+
+void quit_handler(){
+
+    //closing shared memory
+    if(virt_addr != NULL)
+    {
+        munmap(virt_addr, pg_size);  /* Unmap the page */
+        close(md);                   /*   Close file   */
+        shm_unlink("my_memory");     /* Unlink shared-memory object */
+    }
+
+    //closing PIPE
+    if(fp != NULL){
+        close (fp);
+    }
+
+    //closing sockets
+    if(sockfd > 0){
+        close (sockfd);
+    }
+    if(pyfd > 0) {
+        close(pyfd);
+    }
+
+}
+
 int main(int argc, char * argv[]) {
 
     int opt = 0;
@@ -38,10 +68,9 @@ int main(int argc, char * argv[]) {
 
     int i, md, status, pid;
     long pg_size;
-    struct SHM_data *virt_addr;
+
     time_t t;
     srand((unsigned) time(&t));
-
 
     /* Create shared memory object */
     md = shm_open(SHARED_MEMORY, O_TRUNC | O_CREAT | O_RDWR, 0640);
@@ -68,7 +97,7 @@ int main(int argc, char * argv[]) {
     //create regular producers
     for (i = 0; i < numOfProducers-1; ++i) {
         struct Data data1;
-        data1.current_SHM = virt_addr;
+        //data1.current_SHM = virt_addr;
         data1.sec = 2;
         data1.lowval = 5;
         data1.highval = 100;
@@ -83,10 +112,32 @@ int main(int argc, char * argv[]) {
         createSolver(virt_addr);
     }
 
+
+
+    //handeling signals
+
+    struct sigaction closing_signals;
+    memset(&closing_signals, 0, sizeof(closing_signals));
+    sigset_t emptymask;
+    sigemptyset(&emptymask);
+
+    closing_signals.sa_handler = quit_handler;
+    closing_signals.sa_mask = emptymask;
+    closing_signals.sa_flags = SA_SIGINFO;
+
+    sigaction(SIGINT, &closing_signals,NULL);
+    sigaction(SIGTSTP, &closing_signals,NULL);
+
+
+
+
     wait(&status);
     //pid = waitpid(-1, &status, 0);
+
     status = munmap(virt_addr, pg_size);  /* Unmap the page */
     status = close(md);                   /*   Close file   */
     status = shm_unlink("my_memory");     /* Unlink shared-memory object */
+
+
     return 0;
 }
