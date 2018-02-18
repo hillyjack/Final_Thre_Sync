@@ -24,10 +24,12 @@
 #include <sys/time.h>
 #include <time.h>
 #include <dirent.h>
+#include <sys/stat.h>
+#include <sys/prctl.h>
 
 
 #define MAXBUF 50
-#define PORT 2011
+#define PORT 2000
 #define NUM_OF_Q 10
 #define SHARED_MEMORY "/my_memory"
 

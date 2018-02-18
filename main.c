@@ -7,28 +7,36 @@ int md = 0;
 long pg_size = 0;
 FILE *fp = NULL;
 
-void quit_handler(const int signal, void *ptr){
+void quit_handler(int a, siginfo_t * b, void * c){
+    printf("\n\nClosing program\n\n");
 
     //closing shared memory
     if(virt_addr != NULL)
     {
-        munmap(virt_addr, pg_size);  /* Unmap the page */
-        close(md);                   /*   Close file   */
-        shm_unlink("my_memory");     /* Unlink shared-memory object */
+        printf("Unmaping memory page\n");
+        munmap(virt_addr, pg_size);
+        printf("Unlink shared-memory object\n");
+        shm_unlink("my_memory");
     }
 
     //closing PIPE
+    printf("Closing pipe\n");
     if(fp != NULL){
-        close ((int*)fp);
+        fclose(fp);
     }
 
+    printf("Closing sockets\n");
     //closing sockets
-    if(sockfd > 0){
-        close (sockfd);
-    }
     if(pyfd > 0) {
         close(pyfd);
     }
+
+    //printf("closing sockets sockfd\n");
+    if(sockfd > 0){
+        close (sockfd);
+    }
+    printf("\nBye Bye\n");
+
 
 }
 
@@ -37,34 +45,36 @@ int main(int argc, char * argv[]) {
     int opt = 0;
     int numOfProducers = 0;
     int numOfConsumers = 0;
+    if(argc == 5)
+    {
+        while ((opt = getopt(argc, argv, "p:c:")) != -1) {
+            switch (opt) {
+                case 'p':
+                    numOfProducers = atoi(optarg);
+                    if (numOfProducers <= 0) {
+                        numOfProducers = 1;
+                    }
+                    break;
+                case 'c':
+                    numOfConsumers = atoi(optarg);
+                    if (numOfConsumers <= 0) {
+                        numOfConsumers = 1;
+                    }
+                    break;
 
-    while((opt = getopt(argc, argv,"p:c:")) != -1){
-        switch(opt){
-            case 'p':
-                numOfProducers = atoi(optarg);
-                if(numOfProducers <=0)
-                {
-                    numOfProducers = 1;
-                }
-                break;
-            case 'c':
-                numOfConsumers = atoi(optarg);
-                if(numOfConsumers <=0)
-                {
-                    numOfConsumers = 1;
-                }
-                break;
-
-            default:
-                printf("ArgumentsError: please enter the arguments in following from "
-                               "-p <numberOfProducers> -c <numberOfConsumers>\n");
-                exit(1);
+                default:
+                    printf("ArgumentsError: please enter the arguments in following from "
+                                   "-p <numberOfProducers> -c <numberOfConsumers>\n");
+                    exit(0);
+            }
         }
     }
-
-    //printf("p - %d\n",numOfProducers);
-    //printf("c - %d\n",numOfConsumers);
-
+    else
+    {
+        printf("ArgumentsError: please enter the arguments in following from "
+                "-p <numberOfProducers> -c <numberOfConsumers>\n");
+        exit(0);
+    }
 
     int i, md, status, pid;
     long pg_size;
@@ -77,8 +87,8 @@ int main(int argc, char * argv[]) {
     if (md == -1) {printf("smh_open error - %s\n", strerror(errno));}
     ftruncate(md, sizeof(struct SHM_data));
     virt_addr = (struct SHM_data *) mmap(0, sizeof(struct SHM_data), PROT_WRITE | PROT_READ, MAP_SHARED, md, 0);
-    if ((int) virt_addr == -1) {printf("mmap error- %s\n", strerror(errno));}
-    printf("%d\n", virt_addr);
+    if (virt_addr == (void *)-1) {printf("mmap error- %s\n", strerror(errno));}
+    //printf("%d\n", virt_addr);
 
     memset(&virt_addr->arr, 0, NUM_OF_Q * sizeof(struct Question));
     virt_addr->top = 0;
@@ -121,15 +131,12 @@ int main(int argc, char * argv[]) {
     sigset_t emptymask;
     sigemptyset(&emptymask);
 
-    closing_signals.sa_handler = quit_handler;
+    closing_signals.sa_sigaction = quit_handler;
     closing_signals.sa_mask = emptymask;
     closing_signals.sa_flags = SA_SIGINFO;
 
     sigaction(SIGINT, &closing_signals,NULL);
     sigaction(SIGTSTP, &closing_signals,NULL);
-
-
-
 
     wait(&status);
     //pid = waitpid(-1, &status, 0);

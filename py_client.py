@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 import socket
 import sys
 import os
@@ -18,7 +17,7 @@ def sig_handler(a,b):
     else:
         index += 1
 
-    print >> sys.stderr, 'moving to file- ', file_list[index]
+    print >> sys.stderr, 'moving to file-', file_list[index]
 
 index = 0
 run = False
@@ -30,18 +29,18 @@ signal.signal(signal.SIGUSR1, sig_handler)
 
 #create socket
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_address = ('localhost', 2011)
-print >>sys.stderr, 'connecting to %s port %s' % server_address
+server_address = ('localhost', 2000)
+print >>sys.stderr, "\n", 'connecting to %s port %s' % server_address
 client_socket.connect(server_address)
 client_socket.send(str(os.getpid()))
 
 print >>sys.stderr, 'waiting for data'
 data = client_socket.recv(512)
 client_socket.close()
-print >>sys.stderr, 'got it!'
+# print >>sys.stderr, 'got it!'
 
 if (data):
-    print >>sys.stderr, data, "\n"
+    print >>sys.stderr,"data- ", data, "\n"
     file_list = data.split(",")
     last_index = len(file_list) - 1
 else:
@@ -58,11 +57,12 @@ while 1:
         if run:
             sleep(2)
             line = line.rstrip("\n")
-            print >> sys.stderr, 'line- ', line
-            print line
-
-            if(line):
+            # print >> sys.stderr, 'Python line- ', line
+            try:
+                print line
                 sys.stdout.flush()
+            except IOError:
+                pass
         else:
             object.close()
             break
