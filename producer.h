@@ -8,6 +8,7 @@
 #include "includes.h"
 
 char * files_list;
+char * dirPath;
 
 void createProducer(void *p);
 void createPythonProducer();

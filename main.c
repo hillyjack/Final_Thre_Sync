@@ -8,7 +8,7 @@ long pg_size = 0;
 FILE *fp = NULL;
 
 void quit_handler(int a, siginfo_t * b, void * c){
-    printf("\n\nClosing program\n\n");
+    printf("\n\nClosing program-\n\n");
 
     //closing shared memory
     if(virt_addr != NULL)
@@ -30,14 +30,10 @@ void quit_handler(int a, siginfo_t * b, void * c){
     if(pyfd > 0) {
         close(pyfd);
     }
-
-    //printf("closing sockets sockfd\n");
     if(sockfd > 0){
         close (sockfd);
     }
     printf("\nBye Bye\n");
-
-
 }
 
 int main(int argc, char * argv[]) {
@@ -88,7 +84,6 @@ int main(int argc, char * argv[]) {
     ftruncate(md, sizeof(struct SHM_data));
     virt_addr = (struct SHM_data *) mmap(0, sizeof(struct SHM_data), PROT_WRITE | PROT_READ, MAP_SHARED, md, 0);
     if (virt_addr == (void *)-1) {printf("mmap error- %s\n", strerror(errno));}
-    //printf("%d\n", virt_addr);
 
     memset(&virt_addr->arr, 0, NUM_OF_Q * sizeof(struct Question));
     virt_addr->top = 0;
@@ -107,7 +102,6 @@ int main(int argc, char * argv[]) {
     //create regular producers
     for (i = 0; i < numOfProducers-1; ++i) {
         struct Data data1;
-        //data1.current_SHM = virt_addr;
         data1.sec = 2;
         data1.lowval = 5;
         data1.highval = 100;
@@ -122,10 +116,7 @@ int main(int argc, char * argv[]) {
         createSolver(virt_addr);
     }
 
-
-
     //handeling signals
-
     struct sigaction closing_signals;
     memset(&closing_signals, 0, sizeof(closing_signals));
     sigset_t emptymask;
@@ -139,12 +130,7 @@ int main(int argc, char * argv[]) {
     sigaction(SIGTSTP, &closing_signals,NULL);
 
     wait(&status);
-    //pid = waitpid(-1, &status, 0);
-
-    status = munmap(virt_addr, pg_size);  /* Unmap the page */
-    status = close(md);                   /*   Close file   */
-    status = shm_unlink("my_memory");     /* Unlink shared-memory object */
-
-
+    status = munmap(virt_addr, pg_size);
+    status = shm_unlink("my_memory");
     return 0;
 }

@@ -56,10 +56,11 @@ extern int sockfd, pyfd;
 extern FILE *fp;
 
 struct Data{
-    //struct SHM_data * current_SHM;
     int sec;
     int lowval;
     int highval;
 };
+
+void quit_handler(int a, siginfo_t * b, void * c);
 
 #endif //FINAL_THRE_SYNC_INCLUDES_H

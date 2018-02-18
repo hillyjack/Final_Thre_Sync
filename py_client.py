@@ -22,7 +22,8 @@ def sig_handler(a,b):
 index = 0
 run = False
 last_index = 0
-basePath = "../questions-files/"
+# basePath = "../questions-files/"      # IDE
+basePath = "./questions-files/"        # CLI
 
 #Handle signal
 signal.signal(signal.SIGUSR1, sig_handler)
@@ -37,7 +38,6 @@ client_socket.send(str(os.getpid()))
 print >>sys.stderr, 'waiting for data'
 data = client_socket.recv(512)
 client_socket.close()
-# print >>sys.stderr, 'got it!'
 
 if (data):
     print >>sys.stderr,"data- ", data, "\n"
@@ -66,5 +66,3 @@ while 1:
         else:
             object.close()
             break
-
-    #data = None
