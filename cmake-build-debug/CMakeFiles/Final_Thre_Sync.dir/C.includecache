@@ -49,6 +49,8 @@ sys/time.h
 -
 time.h
 -
+dirent.h
+-
 
 /home/ubuntu/CLionProjects/Final_Thre_Sync/main.c
 includes.h
@@ -59,6 +61,8 @@ consumer.h
 /home/ubuntu/CLionProjects/Final_Thre_Sync/consumer.h
 
 /home/ubuntu/CLionProjects/Final_Thre_Sync/producer.c
+sys/stat.h
+-
 producer.h
 /home/ubuntu/CLionProjects/Final_Thre_Sync/producer.h
 

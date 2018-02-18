@@ -23,14 +23,14 @@ def sig_handler(a,b):
 index = 0
 run = False
 last_index = 0
-basePath = "../"
+basePath = "../questions-files/"
 
 #Handle signal
 signal.signal(signal.SIGUSR1, sig_handler)
 
 #create socket
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_address = ('localhost', 2009)
+server_address = ('localhost', 2011)
 print >>sys.stderr, 'connecting to %s port %s' % server_address
 client_socket.connect(server_address)
 client_socket.send(str(os.getpid()))
@@ -51,9 +51,10 @@ else:
 while 1:
     current_file = file_list[index]
     fullPath = os.path.join(basePath, current_file)
+    object = open(fullPath)
     run = True
 
-    for line in open(fullPath):
+    for line in object:
         if run:
             sleep(2)
             line = line.rstrip("\n")
@@ -63,6 +64,7 @@ while 1:
             if(line):
                 sys.stdout.flush()
         else:
+            object.close()
             break
 
     #data = None

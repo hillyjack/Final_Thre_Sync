@@ -7,6 +7,7 @@
 
 #include "includes.h"
 
+char * files_list;
 
 void createProducer(void *p);
 void createPythonProducer();

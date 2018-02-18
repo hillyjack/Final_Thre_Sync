@@ -23,10 +23,11 @@
 #include <memory.h>
 #include <sys/time.h>
 #include <time.h>
+#include <dirent.h>
 
 
 #define MAXBUF 50
-#define PORT 2009
+#define PORT 2011
 #define NUM_OF_Q 10
 #define SHARED_MEMORY "/my_memory"
 

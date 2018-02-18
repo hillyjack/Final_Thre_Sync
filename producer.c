@@ -2,7 +2,10 @@
 // Created by ubuntu on 11/02/18.
 //
 
+#include <sys/stat.h>
 #include "producer.h"
+char * files_list = "";
+char * dirPath = "../questions-files";
 
 int sockfd, pyfd;
 
@@ -43,7 +46,6 @@ void createProducer(void *p) {
     else{}
 }
 
-
 void questionToShmArr (double num1, double num2, int op ){
     struct Question Q;
     Q.num1 = num1;
@@ -65,6 +67,27 @@ void questionToShmArr (double num1, double num2, int op ){
     sem_post(&virt_addr->sem2);
 }
 
+void createFilesList(){
+
+    DIR *dirObj;
+    struct dirent *dirQF;
+
+    if((dirObj = opendir(dirPath)) == NULL) {
+        fprintf(stderr,"cannot open directory 'questions-files'");
+        return;
+    }
+    while((dirQF = readdir(dirObj)) != NULL) {
+        if(strcmp(dirQF->d_name + strlen(dirQF->d_name) - 4,".txt") == 0)
+        {
+            printf ("##############%s\n############", dirQF->d_name);
+        }
+        //strcmp(".",dirQF->d_name);
+       // strcmp("..",dirQF->d_name);
+    }
+
+    closedir(dirObj);
+}
+
 void createPythonProducer() {
 
     int pid = fork();
@@ -74,7 +97,8 @@ void createPythonProducer() {
 
         int d = 0;
         int py_id  = 0;
-        char * files_list;
+
+        createFilesList();
 
         //create socket
         struct sockaddr_in addr;
@@ -83,6 +107,7 @@ void createPythonProducer() {
         //int sockfd, pyfd;
 
         printf("*********starting socket*********\n");
+
         sockfd = socket(AF_INET, SOCK_STREAM, 0);
         if (sockfd < 0) {
             printf("socket sockfd - %s\n", strerror(errno));
@@ -179,7 +204,8 @@ void createPythonProducer() {
             printf("---------------Question loaded-----------------\n");
 
             //if(rand()%5 == 0)
-            d++;
+            //d++;
+            d = rand()%5;
             printf("---------------d =%d-----------------\n",d);
             if (d == 2)
             {
